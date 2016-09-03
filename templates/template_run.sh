@@ -4,16 +4,7 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 echo " "
 echo " "
-echo "Converting svg to font icon"
-
-echo " "
-echo " "
-echo "Execute >>> npm install"
-npm install
-
-echo " "
-echo " "
-echo "Execute >>> grunt"
+echo "Execute grunt to convert svg to font icon"
 grunt
 
 printf "\e[32m" # Set green color

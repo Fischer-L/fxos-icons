@@ -73,18 +73,42 @@ module.exports = function(grunt) {
     clean: {
       fonts: 'fonts',
       output: 'output'
+    },
+
+    shell: {
+      completeMsg: {
+        command: [
+          'printf "\\e[32m"',
+          'echo "Converting finished... "',
+          'echo "The font icons are saved in the fonts folder."',
+          'echo "Open index.html to inpsect the font icons"',
+          'echo "\\033[0m"'
+        ].join(";")
+      }
+    },
+
+    watch: {
+      build: {
+        files: ["images/*.svg"],
+        tasks: ["build"]
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-webfont');
   grunt.loadNpmTasks('grunt-rename');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-shell');
 
-  grunt.registerTask('default', [
+  grunt.registerTask('build', [
     'clean:fonts',
     'webfont:files',
     'webfont:embedded',
     'rename',
-    'clean:output'
+    'clean:output',
+    "shell:completeMsg"
   ]);
+
+  grunt.registerTask("default", ["build", "watch:build"]);
 };

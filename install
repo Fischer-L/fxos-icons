@@ -78,6 +78,12 @@ else
   brew install fontforge --with-python
 fi
 
+echo " "
+echo " "
+echo "Execute >>> npm install"
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+npm install
+
 printf "\e[32m" # Set green color
 echo " "
 echo " "
