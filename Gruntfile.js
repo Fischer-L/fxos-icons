@@ -76,6 +76,10 @@ module.exports = function(grunt) {
     },
 
     shell: {
+      installFontOnSystem: {
+        command: 'cp ./fonts/fxos-icons.ttf /Users/${USER}/Library/Fonts/fxos-icons.ttf'
+      },
+
       completeMsg: {
         command: [
           'printf "\\e[32m"',
@@ -107,6 +111,7 @@ module.exports = function(grunt) {
     'webfont:embedded',
     'rename',
     'clean:output',
+    "shell:installFontOnSystem",
     "shell:completeMsg"
   ]);
 
