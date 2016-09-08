@@ -60,6 +60,16 @@ fi
 
 echo " "
 echo " "
+echo "Check if grunt installed"
+if [ $(program_is_installed grunt) == 1 ]; then
+  echo "grunt installed"
+else
+  echo "grunt not installed... Install it..."
+  npm install -g grunt-cli
+fi
+
+echo " "
+echo " "
 echo "Check if ttfautohint installed"
 if [ $(is_installed_by_brew ttfautohint) == 1 ]; then
   echo "ttfautohint installed"
